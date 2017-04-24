@@ -63,7 +63,7 @@ This software is released under the MIT License, see <http://opensource.org/lice
 - atrisk: no. at risk table
 - xatrisk: x-axis variable for no. at risk table
 
-* if argument 'event_value' is specified.
+* if argument 'event_value' is specified
 
 - adjleft: raw adjusted no at risk
 - adjatrisk: variable of adjusted no at risk table

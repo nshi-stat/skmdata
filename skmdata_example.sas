@@ -251,25 +251,3 @@ proc sgplot data = outdatcmp;
   yaxis grid label = "Cumulative incidence function" min = 0 max = 1;
 run;
 
-
-
-ods graphics on / height = 18cm width = 24cm imagename = "skmdata_inside_adjcmprisk"
-  outputfmt = png reset = index;
-ods listing gpath = "&Path." image_dpi = 300 style = plotc;
-proc sgplot data = outdatcmp;
-  step x = time y = est /
-    group = strata lineattrs = (thickness = 2 pattern = 1) name = "legend";
-  scatter x = time y = ycensor /
-    group = strata markerattrs = (symbol = neelde size = 15);
-  band x = time lower = lcl upper = ucl /
-    group = strata type = step transparency = 0.8;
-  symbolchar name = neelde char = '2759'x / voffset = .25;
-  xaxistable adjatrisk /
-    x = xatrisk class = strata title = "Adjusted no. at risk" location = outside;
-  keylegend "legend" /
-    across = 1 location = inside position = topright opaque;
-  xaxis grid label = "Months after randomization" min = 0 max = &timemax.
-    values = (0 to &timemax. by &timeby.);
-  yaxis grid label = "Cumulative incidence function" min = 0 max = 1;
-run;
-
